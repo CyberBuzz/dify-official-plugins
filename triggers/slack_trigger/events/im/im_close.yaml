@@ -79,6 +79,16 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (im_close)."
+        user:
+          type: "string"
+          description: "ID of the user who closed the DM."
+        channel:
+          type: "string"
+          description: "ID of the DM channel that was closed."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

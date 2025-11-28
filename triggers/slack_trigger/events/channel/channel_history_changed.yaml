@@ -79,6 +79,19 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (channel_history_changed)."
+        latest:
+          type: "string"
+          description: "Timestamp of the latest message affected."
+        ts:
+          type: "string"
+          description: "Timestamp of the change."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

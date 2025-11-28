@@ -79,6 +79,60 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (pin_added)."
+        user:
+          type: "string"
+          description: "ID of the user who pinned the item."
+        channel_id:
+          type: "string"
+          description: "ID of the channel where the item was pinned."
+        item:
+          type: "object"
+          description: "The pinned item."
+          properties:
+            type:
+              type: "string"
+              description: "Type of item (message, file)."
+            channel:
+              type: "string"
+              description: "Channel ID."
+            created_by:
+              type: "string"
+              description: "User ID who created the item."
+            created:
+              type: "number"
+              description: "Unix timestamp when the item was created."
+            message:
+              type: "object"
+              description: "Message object if the pinned item is a message."
+            file:
+              type: "object"
+              description: "File object if the pinned item is a file."
+        item_user:
+          type: "string"
+          description: "ID of the user who owns the pinned item."
+        pin_count:
+          type: "string"
+          description: "Current number of pinned items in the channel."
+        pinned_info:
+          type: "object"
+          description: "Information about the pin."
+          properties:
+            channel:
+              type: "string"
+              description: "Channel ID."
+            pinned_by:
+              type: "string"
+              description: "User ID who pinned the item."
+            pinned_ts:
+              type: "number"
+              description: "Unix timestamp when the item was pinned."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

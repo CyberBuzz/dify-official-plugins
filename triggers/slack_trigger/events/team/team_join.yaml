@@ -79,6 +79,117 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (team_join)."
+        user:
+          type: "object"
+          description: "The user who joined the team."
+          properties:
+            id:
+              type: "string"
+              description: "User ID."
+            team_id:
+              type: "string"
+              description: "Team ID."
+            name:
+              type: "string"
+              description: "Username."
+            real_name:
+              type: "string"
+              description: "User's real name."
+            tz:
+              type: "string"
+              description: "Timezone identifier."
+            tz_label:
+              type: "string"
+              description: "Timezone label."
+            tz_offset:
+              type: "number"
+              description: "Timezone offset in seconds."
+            profile:
+              type: "object"
+              description: "User profile information."
+              properties:
+                title:
+                  type: "string"
+                  description: "User's title."
+                phone:
+                  type: "string"
+                  description: "User's phone number."
+                skype:
+                  type: "string"
+                  description: "User's Skype handle."
+                real_name:
+                  type: "string"
+                  description: "User's real name."
+                real_name_normalized:
+                  type: "string"
+                  description: "Normalized real name."
+                display_name:
+                  type: "string"
+                  description: "User's display name."
+                display_name_normalized:
+                  type: "string"
+                  description: "Normalized display name."
+                status_text:
+                  type: "string"
+                  description: "User's status text."
+                status_emoji:
+                  type: "string"
+                  description: "User's status emoji."
+                email:
+                  type: "string"
+                  description: "User's email address."
+                image_24:
+                  type: "string"
+                  description: "24px avatar URL."
+                image_32:
+                  type: "string"
+                  description: "32px avatar URL."
+                image_48:
+                  type: "string"
+                  description: "48px avatar URL."
+                image_72:
+                  type: "string"
+                  description: "72px avatar URL."
+                image_192:
+                  type: "string"
+                  description: "192px avatar URL."
+                image_512:
+                  type: "string"
+                  description: "512px avatar URL."
+            is_admin:
+              type: "boolean"
+              description: "Whether the user is a workspace admin."
+            is_owner:
+              type: "boolean"
+              description: "Whether the user is a workspace owner."
+            is_primary_owner:
+              type: "boolean"
+              description: "Whether the user is the primary workspace owner."
+            is_restricted:
+              type: "boolean"
+              description: "Whether the user is a guest with restricted access."
+            is_ultra_restricted:
+              type: "boolean"
+              description: "Whether the user is a single-channel guest."
+            is_bot:
+              type: "boolean"
+              description: "Whether the user is a bot."
+            is_app_user:
+              type: "boolean"
+              description: "Whether the user is an app user."
+            updated:
+              type: "number"
+              description: "Unix timestamp when the user was last updated."
+        cache_ts:
+          type: "number"
+          description: "Cache timestamp."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

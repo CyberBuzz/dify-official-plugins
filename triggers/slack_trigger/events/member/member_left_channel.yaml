@@ -79,6 +79,25 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (member_left_channel)."
+        user:
+          type: "string"
+          description: "ID of the user who left the channel."
+        channel:
+          type: "string"
+          description: "ID of the channel that was left."
+        channel_type:
+          type: "string"
+          description: "Type of channel (C for public, G for private)."
+        team:
+          type: "string"
+          description: "Team ID."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

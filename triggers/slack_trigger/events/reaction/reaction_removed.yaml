@@ -79,6 +79,41 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (reaction_removed)."
+        user:
+          type: "string"
+          description: "ID of the user who removed the reaction."
+        reaction:
+          type: "string"
+          description: "Name of the emoji reaction that was removed (without colons)."
+        item_user:
+          type: "string"
+          description: "ID of the user who authored the item."
+        item:
+          type: "object"
+          description: "The item from which the reaction was removed."
+          properties:
+            type:
+              type: "string"
+              description: "Type of item (message, file, file_comment)."
+            channel:
+              type: "string"
+              description: "Channel ID where the item exists."
+            ts:
+              type: "string"
+              description: "Timestamp of the message."
+            file:
+              type: "string"
+              description: "File ID if the reaction was on a file."
+            file_comment:
+              type: "string"
+              description: "File comment ID if the reaction was on a file comment."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

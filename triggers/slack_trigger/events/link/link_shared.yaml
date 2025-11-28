@@ -79,6 +79,46 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (link_shared)."
+        channel:
+          type: "string"
+          description: "Channel ID where the link was shared."
+        user:
+          type: "string"
+          description: "ID of the user who shared the link."
+        message_ts:
+          type: "string"
+          description: "Timestamp of the message containing the link."
+        thread_ts:
+          type: "string"
+          description: "Thread timestamp if the message is in a thread."
+        links:
+          type: "array"
+          description: "Array of shared links."
+          items:
+            type: "object"
+            properties:
+              domain:
+                type: "string"
+                description: "Domain of the link."
+              url:
+                type: "string"
+                description: "Full URL of the link."
+        is_bot_user_member:
+          type: "boolean"
+          description: "Whether the bot user is a member of the channel."
+        unfurl_id:
+          type: "string"
+          description: "Unique ID for the unfurl request."
+        source:
+          type: "string"
+          description: "Source of the link share (e.g., conversations_history)."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

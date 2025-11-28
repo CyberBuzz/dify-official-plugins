@@ -79,6 +79,16 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (team_domain_change)."
+        url:
+          type: "string"
+          description: "New workspace URL."
+        domain:
+          type: "string"
+          description: "New workspace domain."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

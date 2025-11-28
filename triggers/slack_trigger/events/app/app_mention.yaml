@@ -120,6 +120,137 @@ output_schema:
         client_msg_id:
           type: "string"
           description: "Client message ID."
+        thread_ts:
+          type: "string"
+          description: "Timestamp of the parent message if this mention is in a thread."
+        subtype:
+          type: "string"
+          description: "Message subtype if applicable."
+        bot_id:
+          type: "string"
+          description: "Bot ID if the mention was sent by a bot."
+        bot_profile:
+          type: "object"
+          description: "Bot profile information if sent by a bot."
+          properties:
+            id:
+              type: "string"
+              description: "Bot ID."
+            deleted:
+              type: "boolean"
+              description: "Whether the bot is deleted."
+            name:
+              type: "string"
+              description: "Bot name."
+            updated:
+              type: "number"
+              description: "Timestamp when the bot was last updated."
+            app_id:
+              type: "string"
+              description: "App ID associated with the bot."
+            team_id:
+              type: "string"
+              description: "Team ID where the bot exists."
+            icons:
+              type: "object"
+              description: "Bot icon URLs."
+        username:
+          type: "string"
+          description: "Username of the sender."
+        user_team:
+          type: "string"
+          description: "Team ID of the user if from a different workspace (Enterprise Grid)."
+        source_team:
+          type: "string"
+          description: "Source team ID for cross-workspace messages."
+        user_profile:
+          type: "object"
+          description: "User profile information."
+          properties:
+            name:
+              type: "string"
+              description: "User's display name."
+            display_name:
+              type: "string"
+              description: "User's display name."
+            real_name:
+              type: "string"
+              description: "User's real name."
+            avatar_hash:
+              type: "string"
+              description: "Avatar hash."
+            image_72:
+              type: "string"
+              description: "URL to 72px avatar image."
+            first_name:
+              type: "string"
+              description: "User's first name."
+            team:
+              type: "string"
+              description: "Team ID."
+        attachments:
+          type: "array"
+          description: "Legacy message attachments."
+          items:
+            type: "object"
+            properties:
+              fallback:
+                type: "string"
+                description: "Fallback text for the attachment."
+              color:
+                type: "string"
+                description: "Attachment color."
+              pretext:
+                type: "string"
+                description: "Text that appears above the attachment."
+              author_name:
+                type: "string"
+                description: "Author name."
+              author_link:
+                type: "string"
+                description: "Author link URL."
+              author_icon:
+                type: "string"
+                description: "Author icon URL."
+              title:
+                type: "string"
+                description: "Attachment title."
+              title_link:
+                type: "string"
+                description: "Attachment title link."
+              text:
+                type: "string"
+                description: "Attachment text."
+              fields:
+                type: "array"
+                description: "Attachment fields."
+                items:
+                  type: "object"
+                  properties:
+                    title:
+                      type: "string"
+                      description: "Field title."
+                    value:
+                      type: "string"
+                      description: "Field value."
+                    short:
+                      type: "boolean"
+                      description: "Whether the field is short."
+              image_url:
+                type: "string"
+                description: "Image URL."
+              thumb_url:
+                type: "string"
+                description: "Thumbnail URL."
+              footer:
+                type: "string"
+                description: "Footer text."
+              footer_icon:
+                type: "string"
+                description: "Footer icon URL."
+              ts:
+                type: "number"
+                description: "Attachment timestamp."
         blocks:
           type: "array"
           description: "Structured blocks containing message content."
@@ -131,18 +262,70 @@ output_schema:
                 description: "Unique identifier for the block."
               type:
                 type: "string"
-                description: "Block type (e.g., rich_text)."
+                description: "Block type (e.g., rich_text, section, divider)."
               elements:
                 type: "array"
                 description: "Elements within the block."
                 items:
                   type: "object"
-                  properties:
-                    elements:
-                      type: "array"
-                      description: "Nested elements within the element."
-                      items:
-                        type: "object"
+        files:
+          type: "array"
+          description: "Files attached to the message."
+          items:
+            type: "object"
+            properties:
+              id:
+                type: "string"
+                description: "File ID."
+              name:
+                type: "string"
+                description: "File name."
+              title:
+                type: "string"
+                description: "File title."
+              mimetype:
+                type: "string"
+                description: "File MIME type."
+              filetype:
+                type: "string"
+                description: "File type."
+              pretty_type:
+                type: "string"
+                description: "Human-readable file type."
+              user:
+                type: "string"
+                description: "User who uploaded the file."
+              size:
+                type: "number"
+                description: "File size in bytes."
+              url_private:
+                type: "string"
+                description: "Private URL to the file."
+              url_private_download:
+                type: "string"
+                description: "Private download URL."
+              permalink:
+                type: "string"
+                description: "Permalink to the file."
+              permalink_public:
+                type: "string"
+                description: "Public permalink."
+        upload:
+          type: "boolean"
+          description: "Whether the message is an upload."
+        display_as_bot:
+          type: "boolean"
+          description: "Whether to display the message as from a bot."
+        edited:
+          type: "object"
+          description: "Edit information if the message was edited."
+          properties:
+            user:
+              type: "string"
+              description: "User who edited the message."
+            ts:
+              type: "string"
+              description: "Timestamp of the edit."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

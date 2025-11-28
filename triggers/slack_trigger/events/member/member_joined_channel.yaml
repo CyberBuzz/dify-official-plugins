@@ -79,6 +79,28 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (member_joined_channel)."
+        user:
+          type: "string"
+          description: "ID of the user who joined the channel."
+        channel:
+          type: "string"
+          description: "ID of the channel that was joined."
+        channel_type:
+          type: "string"
+          description: "Type of channel (C for public, G for private)."
+        team:
+          type: "string"
+          description: "Team ID."
+        inviter:
+          type: "string"
+          description: "ID of the user who invited the member (if applicable)."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

@@ -79,6 +79,24 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (tokens_revoked)."
+        tokens:
+          type: "object"
+          description: "Information about the revoked tokens."
+          properties:
+            oauth:
+              type: "array"
+              description: "List of revoked OAuth token user IDs."
+              items:
+                type: "string"
+            bot:
+              type: "array"
+              description: "List of revoked bot token user IDs."
+              items:
+                type: "string"
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

@@ -79,6 +79,35 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (im_created)."
+        user:
+          type: "string"
+          description: "ID of the user the DM is with."
+        channel:
+          type: "object"
+          description: "Information about the created DM."
+          properties:
+            id:
+              type: "string"
+              description: "DM channel ID."
+            created:
+              type: "number"
+              description: "Unix timestamp when the DM was created."
+            is_im:
+              type: "boolean"
+              description: "Whether this is a DM."
+            is_org_shared:
+              type: "boolean"
+              description: "Whether this DM is shared across the organization."
+            user:
+              type: "string"
+              description: "User ID the DM is with."
+            is_user_deleted:
+              type: "boolean"
+              description: "Whether the user has been deleted."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

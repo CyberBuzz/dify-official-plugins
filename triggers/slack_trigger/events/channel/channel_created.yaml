@@ -79,6 +79,44 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (channel_created)."
+        channel:
+          type: "object"
+          description: "Information about the created channel."
+          properties:
+            id:
+              type: "string"
+              description: "Channel ID."
+            name:
+              type: "string"
+              description: "Channel name."
+            created:
+              type: "number"
+              description: "Unix timestamp when the channel was created."
+            creator:
+              type: "string"
+              description: "User ID of the channel creator."
+            is_channel:
+              type: "boolean"
+              description: "Whether this is a channel."
+            is_shared:
+              type: "boolean"
+              description: "Whether the channel is shared."
+            is_org_shared:
+              type: "boolean"
+              description: "Whether the channel is shared across the organization."
+            context_team_id:
+              type: "string"
+              description: "Team ID in the context."
+            name_normalized:
+              type: "string"
+              description: "Normalized channel name."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

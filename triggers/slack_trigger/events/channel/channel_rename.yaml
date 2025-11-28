@@ -79,6 +79,35 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (channel_rename)."
+        channel:
+          type: "object"
+          description: "Information about the renamed channel."
+          properties:
+            id:
+              type: "string"
+              description: "Channel ID."
+            name:
+              type: "string"
+              description: "New channel name."
+            name_normalized:
+              type: "string"
+              description: "Normalized new channel name."
+            created:
+              type: "number"
+              description: "Unix timestamp when the channel was created."
+            is_channel:
+              type: "boolean"
+              description: "Whether this is a channel."
+            is_mpim:
+              type: "boolean"
+              description: "Whether this is a multi-party IM."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

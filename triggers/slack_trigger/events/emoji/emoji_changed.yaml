@@ -79,6 +79,33 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (emoji_changed)."
+        subtype:
+          type: "string"
+          description: "Subtype of change (add, remove, rename)."
+        name:
+          type: "string"
+          description: "Name of the emoji that was added/removed/renamed."
+        names:
+          type: "array"
+          description: "List of emoji names (for bulk operations)."
+          items:
+            type: "string"
+        old_name:
+          type: "string"
+          description: "Old name of the emoji (for rename operations)."
+        new_name:
+          type: "string"
+          description: "New name of the emoji (for rename operations)."
+        value:
+          type: "string"
+          description: "URL of the emoji image (for add operations) or alias target."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

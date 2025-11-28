@@ -79,6 +79,21 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (file_deleted)."
+        file_id:
+          type: "string"
+          description: "ID of the deleted file."
+        channel_ids:
+          type: "array"
+          description: "IDs of channels where the file was shared."
+          items:
+            type: "string"
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

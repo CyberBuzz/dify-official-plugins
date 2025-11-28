@@ -79,6 +79,36 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (file_comment_added)."
+        file_id:
+          type: "string"
+          description: "ID of the file that was commented on."
+        file:
+          type: "object"
+          description: "File object."
+          properties:
+            id:
+              type: "string"
+              description: "File ID."
+        comment:
+          type: "object"
+          description: "The comment that was added."
+          properties:
+            id:
+              type: "string"
+              description: "Comment ID."
+            user:
+              type: "string"
+              description: "User ID who added the comment."
+            comment:
+              type: "string"
+              description: "Comment text."
+            timestamp:
+              type: "number"
+              description: "Unix timestamp of the comment."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

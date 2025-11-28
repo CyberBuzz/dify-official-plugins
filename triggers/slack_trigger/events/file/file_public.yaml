@@ -79,6 +79,26 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (file_public)."
+        file_id:
+          type: "string"
+          description: "ID of the file made public."
+        user_id:
+          type: "string"
+          description: "ID of the user who made the file public."
+        file:
+          type: "object"
+          description: "File object."
+          properties:
+            id:
+              type: "string"
+              description: "File ID."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

@@ -79,6 +79,35 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (star_removed)."
+        user:
+          type: "string"
+          description: "ID of the user who removed the star."
+        item:
+          type: "object"
+          description: "The unstarred item."
+          properties:
+            type:
+              type: "string"
+              description: "Type of item (message, file, file_comment, channel, im, group)."
+            channel:
+              type: "string"
+              description: "Channel ID if applicable."
+            message:
+              type: "object"
+              description: "Message object if the unstarred item is a message."
+            file:
+              type: "object"
+              description: "File object if the unstarred item is a file."
+            comment:
+              type: "object"
+              description: "Comment object if the unstarred item is a file comment."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."

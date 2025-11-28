@@ -79,6 +79,22 @@ output_schema:
     event_body:
       type: "object"
       description: "Sanitized Slack event body content."
+      properties:
+        type:
+          type: "string"
+          description: "Event type (group_archive)."
+        channel:
+          type: "string"
+          description: "ID of the private channel that was archived."
+        user:
+          type: "string"
+          description: "ID of the user who archived the channel."
+        is_moved:
+          type: "number"
+          description: "Indicates if the channel was moved (0 or 1)."
+        event_ts:
+          type: "string"
+          description: "Event timestamp."
     raw_payload:
       type: "object"
       description: "Sanitized Slack event envelope received from Slack."
